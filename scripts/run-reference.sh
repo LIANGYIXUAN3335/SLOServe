@@ -43,7 +43,7 @@ python3 bench/run.py \
   --max-tokens 10 \
   --batch-ratio 0.35 \
   --ttft-slo-ms 300 \
-  --output bench/results/reference-fake-overload.json
+  --output work/reference-fake-overload.json
 
 python3 bench/run.py \
   --endpoint "${SLOSERVE_ENDPOINT}" \
@@ -52,7 +52,7 @@ python3 bench/run.py \
   --max-tokens 10 \
   --batch-ratio 0 \
   --ttft-slo-ms 300 \
-  --output bench/results/reference-fake-steady.json
+  --output work/reference-fake-steady.json
 
 python3 bench/run.py \
   --endpoint "${SLOSERVE_ENDPOINT}" \
@@ -64,3 +64,6 @@ python3 bench/run.py \
   --output work/reference-failure-smoke.json >/dev/null
 
 python3 -c 'import json; report=json.load(open("work/reference-failure-smoke.json")); assert report["summary"]["errors"] == 1 and report["summary"]["completed"] == 0'
+
+cp work/reference-fake-overload.json bench/results/reference-fake-overload.json
+cp work/reference-fake-steady.json bench/results/reference-fake-steady.json
