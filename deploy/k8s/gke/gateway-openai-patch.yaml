@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sloserve-gateway
+  namespace: sloserve
+spec:
+  template:
+    spec:
+      containers:
+        - name: gateway
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ENGINE_MODE
+              value: openai
+            - name: UPSTREAM_URL
+              value: http://vllm:8000
+            - name: DEFAULT_MODEL
+              value: Qwen/Qwen2.5-1.5B-Instruct
+            - name: CACHE_SALT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sloserve-secrets
+                  key: cache-salt-secret

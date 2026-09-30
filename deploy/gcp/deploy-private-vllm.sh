@@ -7,6 +7,12 @@ SLOSERVE_GCP_SERVICE="${GCP_SERVICE_NAME:-sloserve-vllm}"
 SLOSERVE_GCP_REPOSITORY="${GCP_ARTIFACT_REPOSITORY:-sloserve}"
 SLOSERVE_GCP_IMAGE="${SLOSERVE_GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/${SLOSERVE_GCP_REPOSITORY}/vllm:v0.10.2-qwen2.5-1.5b"
 
+gcloud services enable \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  run.googleapis.com \
+  --project "${GCP_PROJECT_ID}"
+
 gcloud artifacts repositories describe "${SLOSERVE_GCP_REPOSITORY}" \
   --project "${GCP_PROJECT_ID}" \
   --location "${SLOSERVE_GCP_REGION}" >/dev/null 2>&1 || \
@@ -33,4 +39,5 @@ gcloud run deploy "${SLOSERVE_GCP_SERVICE}" \
   --min 0 \
   --max 1 \
   --timeout 900 \
+  --ingress all \
   --no-allow-unauthenticated

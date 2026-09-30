@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: sloserve-gateway:dev
-          imagePullPolicy: IfNotPresent
+          image: sloserve-gateway:local
+          imagePullPolicy: Never
           ports:
             - name: http
               containerPort: 8080
@@ -24,11 +24,9 @@ spec:
             - name: PORT
               value: '8080'
             - name: ENGINE_MODE
-              value: openai
-            - name: UPSTREAM_URL
-              value: http://vllm:8000
+              value: fake
             - name: DEFAULT_MODEL
-              value: Qwen/Qwen2.5-1.5B-Instruct
+              value: fake-engine/v1
             - name: MAX_RUNNING
               value: '16'
             - name: INTERACTIVE_RESERVE
@@ -37,11 +35,6 @@ spec:
               value: '40000'
             - name: MAX_QUEUE_WAIT
               value: 500ms
-            - name: CACHE_SALT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: sloserve-secrets
-                  key: cache-salt-secret
           startupProbe:
             httpGet:
               path: /readyz

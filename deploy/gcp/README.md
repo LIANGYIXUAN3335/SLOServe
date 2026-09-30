@@ -1,13 +1,13 @@
-# Private GCP GPU experiment
+# IAM-protected GCP GPU experiment
 
-The public portfolio page should remain a frozen-data dashboard. The GPU engine is an experiment target: private, scale-to-zero, and capped at one L4 instance.
+The portfolio page should remain a frozen-data dashboard. The GPU engine is a short-lived experiment target: authenticated with Cloud Run IAM, scale-to-zero, and capped at one L4 instance.
 
 ## Before spending money
 
-1. Choose a billing project and confirm Cloud Run GPU quota in `us-central1` (or another supported region).
+1. Choose a billing project and confirm Cloud Run GPU quota in `us-central1` (or another supported region). The script enables Artifact Registry, Cloud Build, and Cloud Run APIs in that project.
 2. Create a budget alert. An alert is not a hard spending cap.
 3. Review `deploy-private-vllm.sh`; it builds an Artifact Registry image and creates a billable Cloud Run service.
-4. Keep the service private. Do not add `--allow-unauthenticated`.
+4. Keep IAM authentication required. Do not add `--allow-unauthenticated`.
 
 ## Deploy
 
@@ -19,9 +19,13 @@ export GCP_REGION=us-central1
 
 The deployment sets `min=0`, `max=1`, four-request concurrency, no CPU throttling, and one NVIDIA L4. Cloud Run does not scale from GPU utilization, so concurrency must be established by benchmark rather than copied blindly.
 
+The service uses public Cloud Run ingress but rejects callers without IAM authorization. “IAM-protected” is not the same as network-private. A VPC-only endpoint needs a separate internal-ingress design and is outside this experiment.
+
+The image base is pinned to the vLLM v0.10.2 multi-architecture digest, and the model is pinned to Hugging Face revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`.
+
 ## Run the local gateway against it
 
-Use an authenticated local proxy; the private endpoint is never exposed directly:
+Use an authenticated local proxy; the vLLM API is never made anonymously callable:
 
 ```bash
 gcloud run services proxy sloserve-vllm \
@@ -53,4 +57,4 @@ Official references: [Cloud Run GPU configuration](https://docs.cloud.google.com
 
 ## GKE stretch path
 
-`deploy/k8s/base` contains the gateway and one vLLM replica. The `gke` folder adds Google Managed Prometheus and a KEDA example that scales on pending inference requests. The example is deliberately not part of the base kustomization: install its CRDs and verify the metric name before applying it.
+See [`deploy/k8s/README.md`](../k8s/README.md). The base is a GPU-free kind smoke test. The GKE overlay is an explicit paid exception that starts one L4; its optional KEDA example can raise that to two and is never applied by default.

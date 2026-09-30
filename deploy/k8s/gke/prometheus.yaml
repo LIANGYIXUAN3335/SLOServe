@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sloserve-prometheus
+  namespace: sloserve
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 10s
+    scrape_configs:
+      - job_name: vllm
+        static_configs:
+          - targets: ['vllm:8000']
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sloserve-prometheus
+  namespace: sloserve
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sloserve-prometheus
+  template:
+    metadata:
+      labels:
+        app: sloserve-prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v3.5.0
+          args:
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --storage.tsdb.retention.time=2h
+          ports:
+            - name: http
+              containerPort: 9090
+          volumeMounts:
+            - name: config
+              mountPath: /etc/prometheus
+              readOnly: true
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: config
+          configMap:
+            name: sloserve-prometheus
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sloserve-prometheus
+  namespace: sloserve
+spec:
+  type: ClusterIP
+  selector:
+    app: sloserve-prometheus
+  ports:
+    - name: http
+      port: 9090
+      targetPort: http
