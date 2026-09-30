@@ -5,4 +5,4 @@ global:
 scrape_configs:
   - job_name: sloserve-gateway
     static_configs:
-      - targets: ["gateway:8080"]
+      - targets: ['gateway:8080']

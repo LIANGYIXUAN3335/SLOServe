@@ -6,15 +6,15 @@ No chart without its raw JSON, workload, model revision, image digest, hardware,
 
 ## Workload matrix
 
-| Dimension | Values |
-|---|---|
-| Input tokens | 128, 512, 2,048 |
-| Output tokens | 64, 256 |
-| Concurrency | 1, 4, 8, 16 |
-| Shapes | short interactive, long prompt, 80% shared prefix, sudden burst |
-| Policy | direct engine; gateway/no protection; bounded tokens + priority + shedding |
-| Cache | prefix cache off/on |
-| Engine | fake CI; local llama.cpp; vLLM on one pinned GPU |
+| Dimension     | Values                                                                     |
+| ------------- | -------------------------------------------------------------------------- |
+| Input tokens  | 128, 512, 2,048                                                            |
+| Output tokens | 64, 256                                                                    |
+| Concurrency   | 1, 4, 8, 16                                                                |
+| Shapes        | short interactive, long prompt, 80% shared prefix, sudden burst            |
+| Policy        | direct engine; gateway/no protection; bounded tokens + priority + shedding |
+| Cache         | prefix cache off/on                                                        |
+| Engine        | fake CI; local llama.cpp; vLLM on one pinned GPU                           |
 
 ## Procedure for a real model
 

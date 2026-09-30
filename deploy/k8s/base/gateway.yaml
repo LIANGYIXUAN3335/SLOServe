@@ -22,7 +22,7 @@ spec:
               containerPort: 8080
           env:
             - name: PORT
-              value: "8080"
+              value: '8080'
             - name: ENGINE_MODE
               value: openai
             - name: UPSTREAM_URL
@@ -30,11 +30,11 @@ spec:
             - name: DEFAULT_MODEL
               value: Qwen/Qwen2.5-1.5B-Instruct
             - name: MAX_RUNNING
-              value: "16"
+              value: '16'
             - name: INTERACTIVE_RESERVE
-              value: "2"
+              value: '2'
             - name: MAX_QUEUED_TOKENS
-              value: "40000"
+              value: '40000'
             - name: MAX_QUEUE_WAIT
               value: 500ms
             - name: CACHE_SALT_SECRET
@@ -65,7 +65,7 @@ spec:
               cpu: 250m
               memory: 128Mi
             limits:
-              cpu: "1"
+              cpu: '1'
               memory: 512Mi
 ---
 apiVersion: v1

@@ -24,8 +24,16 @@
       "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 },
       "id": 2,
       "targets": [
-        { "expr": "sloserve_running_requests", "legendFormat": "running", "refId": "A" },
-        { "expr": "sloserve_queued_requests", "legendFormat": "queued", "refId": "B" }
+        {
+          "expr": "sloserve_running_requests",
+          "legendFormat": "running",
+          "refId": "A"
+        },
+        {
+          "expr": "sloserve_queued_requests",
+          "legendFormat": "queued",
+          "refId": "B"
+        }
       ],
       "title": "Admission state",
       "type": "timeseries"

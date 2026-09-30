@@ -51,8 +51,16 @@
 body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   background:
-    radial-gradient(circle at 20% -10%, rgb(53 106 95 / 16%), transparent 33rem),
-    radial-gradient(circle at 100% 20%, rgb(63 73 104 / 14%), transparent 30rem),
+    radial-gradient(
+      circle at 20% -10%,
+      rgb(53 106 95 / 16%),
+      transparent 33rem
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgb(63 73 104 / 14%),
+      transparent 30rem
+    ),
     var(--background);
 }
 

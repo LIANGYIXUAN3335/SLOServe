@@ -16,4 +16,4 @@ spec:
         serverAddress: http://prometheus.monitoring.svc.cluster.local:9090
         metricName: vllm_waiting_requests
         query: sum(vllm:num_requests_waiting)
-        threshold: "1"
+        threshold: '1'

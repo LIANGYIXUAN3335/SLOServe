@@ -59,14 +59,14 @@ The local gateway defaults to the deterministic fake engine; it needs no model, 
 
 The committed overload run uses a deterministic 40ms first-token delay, 5ms/token generation delay, four running slots, one slot reserved for interactive traffic, 12 concurrent clients, and a 35% batch mix.
 
-| Outcome | Result |
-|---|---:|
-| Interactive requests | 31 / 31 completed |
-| Interactive TTFT goodput (`≤300ms`) | **100%** |
-| Batch requests shed explicitly | 15 / 17 |
-| TTFT p95 | **240.8ms** |
-| Mean inter-chunk interval p95 | **6.43ms/chunk** |
-| Unexpected errors | **0** |
+| Outcome                             |            Result |
+| ----------------------------------- | ----------------: |
+| Interactive requests                | 31 / 31 completed |
+| Interactive TTFT goodput (`≤300ms`) |          **100%** |
+| Batch requests shed explicitly      |           16 / 17 |
+| TTFT p95                            |       **244.1ms** |
+| Mean inter-chunk interval p95       |  **6.56ms/chunk** |
+| Unexpected errors                   |             **0** |
 
 These numbers prove gateway behavior, not GPU or tokenizer performance. The client observes SSE chunk timing; it does not assume one chunk equals one model token. Real GPU claims will be added only from pinned model/image/hardware runs. Raw data lives in [`bench/results/`](bench/results/), including the effective server limits, fake-engine timings, and Git state.
 

@@ -7,7 +7,7 @@ type WebMCPTool = {
     readOnlyHint?: boolean;
     untrustedContentHint?: boolean;
   };
-  execute(input: unknown): unknown | Promise<unknown>;
+  execute(input: unknown): unknown;
 };
 
 type WebMCPModelContext = {

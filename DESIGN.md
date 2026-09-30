@@ -85,14 +85,14 @@ The controller tests cover reserved capacity, oversized work, and canceled-waite
 
 ## 6. Streaming and retry semantics
 
-| Failure point | Behavior |
-|---|---|
-| Before first token | Retry at most `MAX_PRE_TTFT_RETRIES`; default 1 |
-| After first token | Emit terminal SSE error; never replay content |
-| Client disconnect | Cancel upstream context; release capacity |
-| Queue deadline | HTTP 429 with a retry hint |
-| Invalid request | HTTP 400, no engine call |
-| Upstream non-2xx before stream | HTTP 502 after bounded retry |
+| Failure point                  | Behavior                                        |
+| ------------------------------ | ----------------------------------------------- |
+| Before first token             | Retry at most `MAX_PRE_TTFT_RETRIES`; default 1 |
+| After first token              | Emit terminal SSE error; never replay content   |
+| Client disconnect              | Cancel upstream context; release capacity       |
+| Queue deadline                 | HTTP 429 with a retry hint                      |
+| Invalid request                | HTTP 400, no engine call                        |
+| Upstream non-2xx before stream | HTTP 502 after bounded retry                    |
 
 The fake engine recognizes `[fail-before]` and `[fail-after]` in a prompt so both branches stay testable without a model.
 

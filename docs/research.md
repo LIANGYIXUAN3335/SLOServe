@@ -10,14 +10,14 @@ The durable hiring signal is not a particular framework name. It is evidence tha
 
 The requested view is JobScan’s `🦆 trend` / “鸭先知,” not the Atoms learning app. The latest local snapshot was generated at 17:18 on 2026-09-29 from 8,671 retained JDs.
 
-| Theme | JD / companies | Median time open/close signal | Last-14-day share change | Interpretation |
-|---|---:|---:|---:|---|
-| LLM inference/serving | 177 / 51 | 62 days, but only 5 companies met the close-time threshold | -0.3pp | scarce and specialized; not broadly heating up |
-| GPU platform | 425 / 64 | 33.5 days, 6 companies | **+2.1pp** | the clearest rising AI-infra signal |
-| LLM training/finetune | 319 / 91 | 23.25 days | -0.5pp | real but role-specific demand |
-| AI agents | 2,005 / 420 | 4 days | -3.6pp | common, recently losing share |
-| Data platform | 1,773 / 394 | 4 days | -0.8pp | large baseline market |
-| Backend baseline | 1,040 / 374 | 3 days | +2.0pp | broad demand, faster churn |
+| Theme                 | JD / companies |                              Median time open/close signal | Last-14-day share change | Interpretation                                 |
+| --------------------- | -------------: | ---------------------------------------------------------: | -----------------------: | ---------------------------------------------- |
+| LLM inference/serving |       177 / 51 | 62 days, but only 5 companies met the close-time threshold |                   -0.3pp | scarce and specialized; not broadly heating up |
+| GPU platform          |       425 / 64 |                                     33.5 days, 6 companies |               **+2.1pp** | the clearest rising AI-infra signal            |
+| LLM training/finetune |       319 / 91 |                                                 23.25 days |                   -0.5pp | real but role-specific demand                  |
+| AI agents             |    2,005 / 420 |                                                     4 days |                   -3.6pp | common, recently losing share                  |
+| Data platform         |    1,773 / 394 |                                                     4 days |                   -0.8pp | large baseline market                          |
+| Backend baseline      |    1,040 / 374 |                                                     3 days |                   +2.0pp | broad demand, faster churn                     |
 
 Within the 177 serving JDs, the differentiating skills are coherent:
 

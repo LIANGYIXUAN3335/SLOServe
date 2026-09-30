@@ -13,9 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'http://localhost:3000',
-  ),
+  metadataBase: new URL('https://sloserve-lab.silky-ibis-9816.chatgpt.site'),
   title: 'SLOServe — Inference Control Plane & Benchmark Lab',
   description:
     'A reproducible lab for measuring and protecting LLM inference latency, goodput, reliability, and cost.',
