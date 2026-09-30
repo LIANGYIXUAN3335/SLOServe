@@ -1,0 +1,58 @@
+{
+  "annotations": { "list": [] },
+  "editable": false,
+  "graphTooltip": 1,
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 16, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(sloserve_ttft_seconds_bucket[1m])))",
+          "legendFormat": "TTFT p95",
+          "refId": "A"
+        }
+      ],
+      "title": "Time to first token",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 },
+      "id": 2,
+      "targets": [
+        { "expr": "sloserve_running_requests", "legendFormat": "running", "refId": "A" },
+        { "expr": "sloserve_queued_requests", "legendFormat": "queued", "refId": "B" }
+      ],
+      "title": "Admission state",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 },
+      "id": 3,
+      "targets": [
+        {
+          "expr": "sum by (outcome) (rate(sloserve_requests_total[1m]))",
+          "legendFormat": "{{outcome}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Request outcomes / second",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 40,
+  "tags": ["llm", "inference", "sloserve"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timezone": "browser",
+  "title": "SLOServe control plane",
+  "uid": "sloserve-control-plane",
+  "version": 1
+}

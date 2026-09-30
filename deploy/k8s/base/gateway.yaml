@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sloserve-gateway
+  namespace: sloserve
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sloserve-gateway
+  template:
+    metadata:
+      labels:
+        app: sloserve-gateway
+    spec:
+      containers:
+        - name: gateway
+          image: sloserve-gateway:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: ENGINE_MODE
+              value: openai
+            - name: UPSTREAM_URL
+              value: http://vllm:8000
+            - name: DEFAULT_MODEL
+              value: Qwen/Qwen2.5-1.5B-Instruct
+            - name: MAX_RUNNING
+              value: "16"
+            - name: INTERACTIVE_RESERVE
+              value: "2"
+            - name: MAX_QUEUED_TOKENS
+              value: "40000"
+            - name: MAX_QUEUE_WAIT
+              value: 500ms
+            - name: CACHE_SALT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sloserve-secrets
+                  key: cache-salt-secret
+          startupProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            periodSeconds: 10
+            failureThreshold: 90
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 250m
+              memory: 128Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sloserve-gateway
+  namespace: sloserve
+spec:
+  type: ClusterIP
+  selector:
+    app: sloserve-gateway
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http

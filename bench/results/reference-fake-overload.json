@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-30T00:30:40.924190+00:00",
+  "engine": "fake-engine/v1",
+  "config": {
+    "endpoint": "http://127.0.0.1:8089",
+    "requests": 48,
+    "concurrency": 12,
+    "max_tokens": 10,
+    "batch_ratio": 0.35,
+    "ttft_slo_ms": 300,
+    "prompt_chars": 72
+  },
+  "elapsed_seconds": 0.905,
+  "summary": {
+    "requests": 48,
+    "completed": 33,
+    "shed": 15,
+    "errors": 0,
+    "request_throughput_rps": 36.473,
+    "output_chunk_throughput_per_second": 364.729,
+    "goodput_percent": 68.75,
+    "by_priority": {
+      "interactive": {
+        "requests": 31,
+        "completed": 31,
+        "shed": 0,
+        "goodput_percent": 100.0
+      },
+      "batch": {
+        "requests": 17,
+        "completed": 2,
+        "shed": 15,
+        "goodput_percent": 11.765
+      }
+    },
+    "ttft_ms": {
+      "p50": 236.718,
+      "p95": 240.807,
+      "p99": 254.298,
+      "mean": 207.706
+    },
+    "mean_tpot_ms": {
+      "p50": 6.14,
+      "p95": 6.43,
+      "p99": 6.536
+    },
+    "e2e_ms": {
+      "p50": 290.629,
+      "p95": 295.384,
+      "p99": 305.469
+    }
+  },
+  "samples": [
+    {
+      "request_id": 0,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 21.009,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 1,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 160.931,
+      "mean_tpot_ms": 6.256,
+      "e2e_ms": 217.603,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 2,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 260.548,
+      "mean_tpot_ms": 5.913,
+      "e2e_ms": 313.844,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 3,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 20.623,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 4,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 160.706,
+      "mean_tpot_ms": 6.252,
+      "e2e_ms": 217.662,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 5,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 62.202,
+      "mean_tpot_ms": 6.286,
+      "e2e_ms": 118.899,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 6,
+      "priority": "batch",
+      "status": 200,
+      "ttft_ms": 62.263,
+      "mean_tpot_ms": 6.221,
+      "e2e_ms": 118.331,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 7,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 62.166,
+      "mean_tpot_ms": 6.283,
+      "e2e_ms": 118.728,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 8,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 160.433,
+      "mean_tpot_ms": 6.276,
+      "e2e_ms": 216.96,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 9,
+      "priority": "batch",
+      "status": 200,
+      "ttft_ms": 62.118,
+      "mean_tpot_ms": 6.222,
+      "e2e_ms": 118.405,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 10,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 160.24,
+      "mean_tpot_ms": 6.373,
+      "e2e_ms": 217.698,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 11,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 19.867,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 12,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 239.971,
+      "mean_tpot_ms": 6.073,
+      "e2e_ms": 295.241,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 13,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 239.976,
+      "mean_tpot_ms": 6.031,
+      "e2e_ms": 294.487,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 14,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 0.241,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 15,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 239.009,
+      "mean_tpot_ms": 5.939,
+      "e2e_ms": 293.378,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 16,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.319,
+      "mean_tpot_ms": 6.391,
+      "e2e_ms": 295.418,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 17,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 0.734,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 18,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.435,
+      "mean_tpot_ms": 6.235,
+      "e2e_ms": 293.649,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 19,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 0.686,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 20,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 236.718,
+      "mean_tpot_ms": 6.345,
+      "e2e_ms": 294.054,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 21,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 236.356,
+      "mean_tpot_ms": 6.353,
+      "e2e_ms": 294.643,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 22,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 1.431,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 23,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.212,
+      "mean_tpot_ms": 6.388,
+      "e2e_ms": 295.322,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 24,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 236.604,
+      "mean_tpot_ms": 6.441,
+      "e2e_ms": 295.304,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 25,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 1.003,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 26,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 235.793,
+      "mean_tpot_ms": 6.422,
+      "e2e_ms": 293.661,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 27,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 235.002,
+      "mean_tpot_ms": 6.58,
+      "e2e_ms": 294.266,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 28,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 241.016,
+      "mean_tpot_ms": 6.098,
+      "e2e_ms": 296.024,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 29,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 240.668,
+      "mean_tpot_ms": 5.915,
+      "e2e_ms": 294.177,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 30,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 1.945,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 31,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 239.26,
+      "mean_tpot_ms": 5.962,
+      "e2e_ms": 293.663,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 32,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.31,
+      "mean_tpot_ms": 5.997,
+      "e2e_ms": 292.34,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 33,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 2.525,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 34,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 238.449,
+      "mean_tpot_ms": 6.114,
+      "e2e_ms": 293.554,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 35,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 238.568,
+      "mean_tpot_ms": 6.088,
+      "e2e_ms": 293.395,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 36,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 1.456,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 37,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.081,
+      "mean_tpot_ms": 6.113,
+      "e2e_ms": 292.215,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 38,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 0.63,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 39,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 235.762,
+      "mean_tpot_ms": 6.14,
+      "e2e_ms": 291.091,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 40,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 238.097,
+      "mean_tpot_ms": 6.078,
+      "e2e_ms": 292.935,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 41,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 1.681,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 42,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 237.124,
+      "mean_tpot_ms": 6.083,
+      "e2e_ms": 291.959,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 43,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 236.464,
+      "mean_tpot_ms": 6.108,
+      "e2e_ms": 291.786,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 44,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 0.587,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 45,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 235.234,
+      "mean_tpot_ms": 6.086,
+      "e2e_ms": 290.212,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    },
+    {
+      "request_id": 46,
+      "priority": "batch",
+      "status": 429,
+      "ttft_ms": null,
+      "mean_tpot_ms": null,
+      "e2e_ms": 2.787,
+      "output_chunks": 0,
+      "completed": false,
+      "error": "{\"error\":{\"message\":\"token queue is full; retry with jitter\",\"type\":\"overloaded\"}}\n"
+    },
+    {
+      "request_id": 47,
+      "priority": "interactive",
+      "status": 200,
+      "ttft_ms": 236.277,
+      "mean_tpot_ms": 6.073,
+      "e2e_ms": 291.046,
+      "output_chunks": 10,
+      "completed": true,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: sloserve-gateway
+  namespace: sloserve
+spec:
+  selector:
+    matchLabels:
+      app: sloserve-gateway
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
+---
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: vllm
+  namespace: sloserve
+spec:
+  selector:
+    matchLabels:
+      app: vllm
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
