@@ -5,7 +5,7 @@ gateway:
 
 test:
 	cd gateway && go test ./...
-	python3 -m unittest bench.test_run
+	python3 -m unittest discover -s bench -p 'test_*.py'
 
 bench:
 	python3 bench/run.py --endpoint http://127.0.0.1:8080 --requests 48 --concurrency 12 --max-tokens 10 --batch-ratio 0.35 --output bench/results/latest.json

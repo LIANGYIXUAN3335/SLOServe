@@ -16,7 +16,9 @@ This repository is intentionally narrower than a “complete AI stack” demo. I
 - Per-tenant prefix-cache salt without putting tenant or request IDs in metric labels.
 - Prometheus counters, gauges, and aggregatable histograms for TTFT, queue time, duration, goodput, retries, tokens, and shed requests.
 - Dependency-free benchmark runner plus an optional Locust workload.
+- Executable SLO and baseline-regression gates for TTFT, goodput, throughput, errors, and policy-specific shedding behavior.
 - An interactive portfolio dashboard with committed, downloadable reference runs.
+- GitHub CI with Go race tests, Python evaluation tests, deterministic overload gates, and dashboard build checks.
 - Docker, Prometheus/Grafana, a GPU-free Kubernetes smoke test, and opt-in GCP/GKE experiment manifests.
 
 Not in v1: distributed training, Slurm, Kafka, a vector database, or a hand-written inference runtime. Those would blur the serving/reliability story rather than strengthen it.
@@ -44,7 +46,7 @@ Reproduce both committed reference workloads and the post-token failure smoke te
 make reference
 ```
 
-`make bench` is the generic runner for a gateway already listening on port 8080.
+`make bench` is the generic runner for a gateway already listening on port 8080. `make reference` is also an executable performance test: it fails before updating the committed artifacts if the candidate run violates an absolute SLO or materially regresses from the checked-in baseline. Gate policies live in [`bench/policies/`](bench/policies/).
 
 Run the dashboard:
 
@@ -83,7 +85,7 @@ These numbers prove gateway behavior, not GPU or tokenizer performance. The clie
 ```text
 app/ + components/     portfolio benchmark dashboard
 gateway/               Go gateway, engines, metrics, tests
-bench/                 dependency-free runner, Locust workload, raw results
+bench/                 runner, SLO/regression policies, tests, raw results
 deploy/                Docker, Prometheus/Grafana, Kubernetes, GCP
 docs/                  research and benchmark method
 ```

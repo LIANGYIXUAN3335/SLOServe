@@ -55,7 +55,16 @@ TTFT SLO=300ms
 
 It verifies policy behavior and measurements. It says nothing about a specific model or GPU.
 
-Run `make reference` to launch that exact gateway profile, regenerate both JSON reports, and verify that a post-token stream failure is counted as an error rather than a completed request.
+Run `make reference` to launch that exact gateway profile. Before replacing either committed JSON artifact, the command verifies that a post-token stream failure is counted as an error and evaluates the new run against the policies in `bench/policies/`.
+
+CI runs `SLOSERVE_UPDATE_REFERENCE=0 make reference`, which evaluates a fresh candidate without rewriting the checked-in baseline. A deliberate local `make reference` updates the artifacts only after every gate passes.
+
+The gate has two layers:
+
+- Absolute product checks enforce TTFT, interactive goodput, unexpected-error, and shedding semantics.
+- Baseline comparisons fail on a material p95 TTFT or throughput regression, with explicit tolerances for runner noise.
+
+This is deliberately a release gate, not a claim of statistical significance. A real-GPU comparison still requires the repeated, pinned procedure above.
 
 ## Failure experiments
 

@@ -1,0 +1,13 @@
+{
+  "name": "deterministic fake-engine steady load",
+  "checks": [
+    {"metric": "summary.errors", "op": "eq", "value": 0},
+    {"metric": "summary.shed", "op": "eq", "value": 0},
+    {"metric": "summary.by_priority.interactive.goodput_percent", "op": "gte", "value": 99.9},
+    {"metric": "summary.ttft_ms.p95", "op": "lte", "value": 100}
+  ],
+  "comparisons": [
+    {"metric": "summary.ttft_ms.p95", "better": "lower", "max_regression_percent": 25},
+    {"metric": "summary.request_throughput_rps", "better": "higher", "max_regression_percent": 20}
+  ]
+}

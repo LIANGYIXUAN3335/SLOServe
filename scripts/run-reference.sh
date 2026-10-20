@@ -65,5 +65,15 @@ python3 bench/run.py \
 
 python3 -c 'import json; report=json.load(open("work/reference-failure-smoke.json")); assert report["summary"]["errors"] == 1 and report["summary"]["completed"] == 0'
 
-cp work/reference-fake-overload.json bench/results/reference-fake-overload.json
-cp work/reference-fake-steady.json bench/results/reference-fake-steady.json
+python3 bench/gate.py work/reference-fake-overload.json \
+  --policy bench/policies/reference-fake-overload.json \
+  --baseline bench/results/reference-fake-overload.json
+
+python3 bench/gate.py work/reference-fake-steady.json \
+  --policy bench/policies/reference-fake-steady.json \
+  --baseline bench/results/reference-fake-steady.json
+
+if [[ "${SLOSERVE_UPDATE_REFERENCE:-1}" == "1" ]]; then
+  cp work/reference-fake-overload.json bench/results/reference-fake-overload.json
+  cp work/reference-fake-steady.json bench/results/reference-fake-steady.json
+fi
